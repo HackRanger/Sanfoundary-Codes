@@ -1,17 +1,12 @@
-C++ Program to Implement Bubble Sort
+This C++ Program implements Bubble Sort Algorithm.
 
-This is a C++ program to sort an array using Bubble sort alogrithm.
+The program has an input array of size 10 initialized with 10 values. This returns the array in non decreasing order using Bubble Sort algorithm.
 
-In Bubble sort each pair of adjacent elements are compared from beginning to end, if they are in reversed order, swap them.
-
-Bubble sort is the most simplest sorting algorithm to understand and implement. It's worst case time complexity is O(n^2), i.e., it's efficiency decreases dramatically on input of large size. Bubble sort is good on detecting that the input is already sorted and has a running time of O(n) for such cases.
-
-Bubble sort should be avoided for large collections. It is also sometimes referred as Sinking sort.
-
-Here is the C++ program which has an input array of size 10 intialized with 10 values. This returns the array in non decreasing order using Bubble Sort algorithm. This program is compiled on g++-4.3.2.
+Here is source code of the C++ Program to Implement Bubble Sort. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
 
 
-//This is a C++ program to sort an array using Bubble Sort
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++ Program to Sort an Array using Bubble Sort
 #include <iostream>
 using namespace std;
 
@@ -37,14 +32,20 @@ int main()
     cout << input_ar[i] << " ";
   return 0;
 }
-
+</pre>
 
 
 Output :
 
 
+<pre lang="bash" cssfile="hk1_style">
 $ g++ BubbleSort.cpp
 $ ./a.out
 
 Sorted Array : 
 2 6 10 21 24 50 66 75 170 802
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>

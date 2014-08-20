@@ -1,9 +1,6 @@
-C++ Program to Implement Bucket Sort.
+This C++ Program implements Bucket Sort Algorithm.
 
-This is a C++ program to sort an array using Bucket sort alogrithm.
-
-Bucket sort is an sorting algorithm. It partitions an array into number of buckets, sorting each bucket individually
-using any good sorting algorithm and than concatenationg of printing each bucket.
+Bucket sort is a sorting algorithm. It partitions an array into number of buckets, sorting each bucket individually using any good sorting algorithm and then concatenating each bucket.
 
 The basic steps of Bucket Sort are :
 1. Set up buckets
@@ -13,15 +10,17 @@ The basic steps of Bucket Sort are :
 
 Bucket sort excepts it's input in a specific range. The size of bucket should be taken as 1 greater than the largest element in the bucket.
 
-It's worst case time complexity is O(n^2) and space complexity is O(n.m), which occurs when every element of input array is in one bucket. Avarage case time complexity is O(n + m), m is the number of buckets.
+It's worst case time complexity is O(n^2) and space complexity is O(n.m), which occurs when every element of input array is in one bucket. Average case time complexity is O(n + m), m is the number of buckets.
 
-Here is the C++ program which has an input array of size 10 intialized with 10 values. This returns the array in non decreasing order using Bucket Sort algorithm. This program is compiled on g++ 4.3.2.
+The program has an input array of size 10 initialized with 10 values. This returns the array in non decreasing order using Bucket Sort algorithm.
+
+Here is source code of the C++ Program to Implement Bucket Sort. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
 
 
-//This is a C++ program to sort an array using Bucket Sort
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++ Program to Sort an Array using Bucket Sort
 #include <iostream>
 using namespace std;
-
 
 //Bucket Sort
 void bucket_sort (int arr[], int n)
@@ -29,7 +28,7 @@ void bucket_sort (int arr[], int n)
   //Here range is [1,100]
   int m = 101;
 
-  //Create n empty buckets
+  //Create m empty buckets
   int buckets[m];
 
   //Intialize all buckets to 0
@@ -41,7 +40,7 @@ void bucket_sort (int arr[], int n)
   for (int i = 0; i < n; ++i)
     ++buckets[arr[i]];
 	
-  //Transfer all buckets into arr[]
+  //Sort using insertion sort and concatenate 
   for (int i = 0, j = 0; j < m; ++j)
     for (int k = buckets[j]; k > 0; --k)
       arr[i++] = j;
@@ -62,12 +61,20 @@ int main()
   return 0;
 }
 
+</pre>
 
-Output : 
+
+Output :
 
 
+<pre lang="bash" cssfile="hk1_style">
 $ g++ BucketSort.cpp
 $ ./a.out
 
 Sorted Array : 
 1 2 3 10 22 24 50 62 75 100
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>
