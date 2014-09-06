@@ -1,0 +1,104 @@
+<div style="text-align:justify">
+This C++ Program implements Randomized Quick Sort Algorithm.
+Quicksort is also called partition exchange sort. It is a comparision based sorting algorithm that makes O(n log n) comparisons to sort n items on average. Worst case time complexity is O(n^2), which rarely occurs. 
+
+Quick sort is inplace sorting algorithm and uses O(log n) additional stack space during the recursion. 
+
+To improve the performance and to decrease the chances of occurence of the worst case, randomized quick sort is used.
+It randomly selects a pivot and place it at the correct position in the array.
+
+Steps :
+1. Randomly pick one element.
+2. Get the correct position and swap the values.
+3. Recursively sort left and right subarrays.
+
+The program has an input array of size 10 initialized with 10 values. This returns the array in non decreasing order using Randomized Quick Sort algorithm.
+
+Here is source code of the C++ Program to Implement Randomized Quick Sort. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++  Program to Sort an Array using Randomized Quick Sort
+#include <iostream>
+#include <cstdlib>
+#define SIZE 10
+using namespace std;
+
+
+void print_ar (int ar[], int size)
+{
+  for (int i = 0; i < size; ++i)
+  {
+    cout << ar[i] << " ";
+  }
+  cout << endl;
+}
+
+//Quick Sort Function
+void quick_sort (int ar[], int left, int right)
+{
+  int l = left, r =  right - 1, size = right - left;
+	
+  //If some elements present
+  if (size > 1)
+  {
+     //Getting a Random Pivot
+     int rand_index = rand () % size + l;
+     int pivot = ar[rand_index];
+		
+     //Process to place the pivot at correct point
+     while (l < r)
+     {
+       while (ar[r] > pivot && r > l)
+       {
+         --r;
+       }
+       while (ar[l] < pivot && l <= r)
+       {
+         ++l;
+       }
+
+       if (l < r)
+       {
+         swap (ar[l], ar[r]);
+         ++l;
+       }
+
+    }
+	
+    //Call recursively
+    quick_sort (ar, left, l);
+    quick_sort (ar, r, right);
+    }
+}
+
+//Driver Function
+int main()
+{
+  ios_base::sync_with_stdio(0);
+  int ar [] = {2, 10, 5, 29, 18, 16, 30, 100, 0, 1};
+	
+  cout << "Array Intially : ";
+  print_ar (ar, SIZE);
+  quick_sort (ar, 0, SIZE);
+  cout << "Sorted Array : ";
+  print_ar (ar, SIZE);
+
+  return 0;
+}
+
+</pre>
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+$ g++ RandQuickSort.cpp
+$ ./a.out
+
+
+Array Intially : 2 10 5 29 18 16 30 100 0 1 
+Sorted Array : 0 1 2 5 10 16 18 29 30 100 
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>
