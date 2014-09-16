@@ -1,0 +1,74 @@
+<div style="text-align:justify">
+This C++ Program Finds Minimum Element In An Array Using Linear Search Algorithm. 
+
+Linear Search can be used to find the minimum element in a list, here array. 
+
+Time Complexity is O(n).
+To find minimum element in an array using linear search :
+1. Assume that the first element is minimum.
+2. Iterate over the complete array, if there is a element found which is less than the minimum till now, update the minimum element.
+
+The program has an input array of size 10 initialized with 10 values. This returns minimum element in an array using Linear Search Algorithm.
+Here is source code of the C++ Program to Find Minimum Element in an Array Using Linear Search Algorithm. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++  Program to Find Minimum Element Element Using Linear Search Algorithm.
+#include <iostream>
+using namespace std;
+
+//Print array values
+void print_ar (int ar[], int size)
+{
+  for (int i = 0; i < size; ++i)
+  {
+    cout << ar[i] << " ";
+  }
+  cout << endl;
+}
+
+//Function to find minimum element using Linear Search
+int min_ele (int ar[], int size)
+{
+  int min = ar[0];
+	
+  //Linear Search
+  for (int i = 0; i < size; ++i)
+  {
+    if (ar[i] < min)
+    {
+      min = ar[i];
+    }
+  }
+  return min;
+}
+//Driver Function
+int main()
+{
+  int ar [] = {1, 2, 78, 18, 16, 30, 29, 2, 0, 199};
+
+  cout << "Your Array : ";
+  print_ar (ar, 10);
+
+  int min = min_ele (ar, 10);
+  cout <<  "Minimum element : " << min << endl;
+
+  return 0;
+}
+
+</pre>
+
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+
+$ g++ MinEleLinearSearch.cpp
+$ ./a.out
+
+Your Array : 1 2 78 18 16 30 29 2 0 199 
+Minimum element : 0
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>

@@ -1,0 +1,85 @@
+<div style="text-align:justify">
+This C++ Program implements Shaker Sort Algorithm. 
+
+Shaker Sort is a sorting algorithm. Shaker sort is a also known as bubble sort, cocktail shaker sort, ripple sort, shuffle sort, or shuttle sort.
+
+Shaker sort is a variation of bubble sort. It is stable and comparison based sorting algorithm. It differs from bubble sort algorithm  in that it sorts the input array in both directions on each pass thorugh the array.
+
+In the below program it first goes from left to right then from right to left. It's worst case and average case Time Complexity is O(n^2), best case is O(n).
+
+The program has an input array of size 10 initialized with 10 values. This returns the array in non decreasing order using Shaker Sort algorithm.
+Here is source code of the C++ Program to Implement Shaker Sort. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++  Program to Sort an Array using Shaker Sort
+#include <iostream>
+using namespace std;
+
+//Print array values
+void print_ar (int ar[], int size)
+{
+  for (int i = 0; i < size; ++i)
+  {
+    cout << ar[i] << " ";
+  }
+    cout << endl;
+}
+
+//Shaker Sort
+void shaker_sort (int ar[], int size)
+{
+  for ( int i = 1; i < size; ++i)
+  {
+    //Left to Right
+    for (int j = i - 1; j < size - i; ++j)
+    {
+      if (ar[j] > ar[j + 1])
+      {
+        swap (ar[j], ar[j + 1]);
+      }
+     }
+    
+    //Right to Left
+    for (int j = size - i - 1; j >= i; --j)
+    {
+      if (ar[j] < ar[j - 1])
+      {
+        swap (ar[j], ar[j - 1]);
+      }
+    }
+  }
+}
+
+//Driver Function
+int main()
+{
+  int ar [] = {1, 2, 78, 18, 16, 30, 29, 2, 0, 199};
+
+  cout << "Array Initially : ";
+  print_ar (ar, 10);
+
+  shaker_sort (ar, 10);
+
+  cout << "Sorted Array : ";
+  print_ar (ar, 10);
+
+  return 0;
+}
+
+</pre>
+
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+
+$ g++ ShakerSort.cpp
+$ ./a.out
+
+Array Initially : 1 2 78 18 16 30 29 2 0 199 
+Sorted Array : 0 1 2 2 16 18 29 30 78 199 
+
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>

@@ -1,0 +1,83 @@
+<div style="text-align:justify">
+This C++ Program Permutes All Letters Of An Input String. 
+
+It iterates from the 0th letter to last letter in a string, swaps values and recursively call permute function to print values.
+
+The program has an input as a string. This prints permutation of all letters of an input string.
+
+Here is source code of the C++ Program to Find Permute All Letters of an Input String. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++ Program to Permute All Letters Of An Input String.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+void permute (string temp_str, int start, int end)
+{
+  int i;
+  if (start == end){
+    cout << temp_str << " ";
+  }
+  else{
+    for (int i = start; i < temp_str.length (); ++i){
+      swap (temp_str[start], temp_str[i]);
+      permute (temp_str, start + 1, end);
+      swap (temp_str[start], temp_str[i]);
+    }
+  }
+}
+int main()
+{
+  string input_str;
+  bool flag = false;
+  cout << "Enter String : ";
+  cin >> input_str;
+  for (int i = 0; i < input_str.length () - 1; ++i)
+  {
+    if (input_str[i] == input_str[i + 1])
+    {
+    flag = true;
+    break;
+    }
+    else {
+      flag = false;
+      break;
+    }
+  }
+  if (flag)
+  {
+    cout << "The permutation of " << input_str << " is : " << input_str << endl;
+  }
+  else 
+  {
+    cout << "The permutations of " << input_str << " are : " << endl;
+    permute (input_str, 0, input_str.length () - 1);
+  }
+  cout << endl;
+  return 0;
+}
+
+</pre>
+
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+
+$ g++ PermuteString.cpp
+$ ./a.out
+
+Enter String : bac
+The permutations of bac are : bac bca abc acb cab cba 
+Enter String : aaaa
+The permutation of aaaaa is : aaaaa
+
+Enter String : b
+The permutations of b are : b 
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>

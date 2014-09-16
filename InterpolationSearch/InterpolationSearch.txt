@@ -1,0 +1,107 @@
+<div style="text-align:justify">
+This C++ Program implements Interpolation Search Algorithm. 
+
+Interpolation search is a search algorithm for a given key value in an indexed array that has been ordered by the values of the key. It is also referred as extrapolation search.
+
+It is based on how humans search through a telephone book for a particular name.
+
+Average case time complexity of interpolation search is O(logn(logn)) comparisons, where n is the number of the elements to be searched. In worst case it can make up to O(n) comparison which is equivalent to linear search.
+
+The program has an input array of size 10 initialized with 10 values. This returns index of the element, if found and -1 if not using Interpolation Search Algorithm.
+Here is source code of the C++ Program to Implement Interpolation Search Algorithm. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++  Program to implement Interpolation Search Algorithm.
+#include <iostream>
+using namespace std;
+
+//Print array values
+void print_ar (int ar[], int size)
+{
+  for (int i = 0; i < size; ++i)
+  {
+    cout << ar[i] << " ";
+  }
+    cout << endl;
+}
+
+//Interpolation Search
+int interpolation_search (int ar[], int value, int size)
+{
+  int low = 0;
+  int high = size - 1;
+  int mid;
+
+  while (ar[low] <= value && ar[high] >= value)
+  {
+    mid = low + ((value - ar[low]) * (high - low)) / (ar[high] - ar[low]);
+    if (ar[mid] < value)
+    {
+      low = mid + 1;
+    }
+    else if (ar[mid] > value)
+    {
+      low = mid - 1;
+    }
+    else
+    {
+      return mid;
+    }
+  }
+	
+  if (ar[low] == value)
+  {
+    return low;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+//Driver Function
+int main()
+{
+  int ar [] = {1, 2, 78, 18, 16, 30, 29, 2, 0, 199};
+  int value, pos;
+
+  cout << "Your Array : ";
+  print_ar (ar, 10);
+	
+  cout << "Enter the value to search : ";
+  cin >> value;
+  pos = interpolation_search (ar, value, 10);
+  if (pos != -1)
+  {
+    cout << "Value Found! at position : " << pos + 1 << endl;
+  }
+  else
+  {
+    cout << "Sorry, the value you searched for is not present." << endl;
+  }
+
+  return 0;
+}
+
+</pre>
+
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+
+$ g++ InterpolationSearch.cpp
+$ ./a.out
+
+Your Array : 1 2 78 18 16 30 29 2 0 199 
+Enter the value to search : 2
+Value Found! at position : 2
+
+Your Array : 1 2 78 18 16 30 29 2 0 199 
+Enter the value to search : 4
+Sorry, the value you searched for is not present.
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>

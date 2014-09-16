@@ -1,0 +1,85 @@
+<div style="text-align:justify">
+This C++ Program implements Stooge Sort Algorithm. 
+
+Stooge is a recursive comparison based sorting algorithm.
+
+It is inefficint but simple to implement sorting algorithm. The worst case time complexity of Stooge Sort is O(n^(log 3 / log 2.5)) and space complexity is O(n)
+
+It works like :
+1. Compare the end value with the start value, if the value at the end is smaller thant the value at the start swap them.
+2. if there are more than 1 elements between start and end of the array then :
+      i)   Stooge sort the initial 2/3 of the array.
+      ii)  Stooge sort the final 2/3 of the array.
+      iii) Stooge sort the intial 2/3 of the array.
+   else
+      i)   Exit
+
+The program has an input array of size 10 initialized with 10 values. This returns the array in non decreasing order using Stooge Sort algorithm.
+Here is source code of the C++ Program to Implement Stooge Sort. The C++ program is successfully compiled and run on g++-4.3.2 on a Linux system. The program output is also shown below.
+
+</div>
+
+<pre lang="cpp" line="1" cssfile="hk1_style">
+//This is a C++  Program to Sort an Array using Stooge Sort
+#include <iostream>
+using namespace std;
+
+//Print array values
+void print_ar (int ar[], int size)
+{
+  for (int i = 0; i < size; ++i)
+  {
+    cout << ar[i] << " ";
+  }
+    cout << endl;
+}
+
+//Stooge Sort
+void stooge_sort (int ar[], int i, int j)
+{
+  if (ar[j] < ar[i])
+  {
+    swap (ar[j], ar[i]);
+  }
+  
+  if ((j - i + 1) > 2)
+  {
+    int t = (j - i + 1) / 3;
+    stooge_sort (ar, i, j - t);
+    stooge_sort (ar, i + t, j);
+    stooge_sort (ar, i, j - t);
+  }
+}
+
+//Driver Function
+int main()
+{
+  int ar [] = {1, 2, 78, 18, 16, 30, 29, 2, 0, 199};
+
+  cout << "Array Initially : ";
+  print_ar (ar, 10);
+
+  stooge_sort (ar, 10);
+
+  cout << "Sorted Array : ";
+  print_ar (ar, 10);
+
+  return 0;
+}
+
+</pre>
+
+Output :
+
+<pre lang="bash" cssfile="hk1_style">
+
+$ g++ StoogeSort.cpp
+$ ./a.out
+
+Array Initially : 1 2 78 18 16 30 29 2 0 199 
+Sorted Array : 0 1 2 2 16 18 29 30 78 199 
+
+</pre>
+
+<strong>Sanfoundry Global Education & Learning Series – 1000 C++ Programs.</strong>
+<a href="http://www.sanfoundry.com/best-reference-books-c-plusplus-programming-data-structures-algorithms/">Here's the list of Best Reference Books in C++ Programming, Data Structures and Algorithms.</a>
